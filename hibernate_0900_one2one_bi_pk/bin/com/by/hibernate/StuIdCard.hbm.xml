@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.by.hibernate.StuIdCard">
+		<id name="id">
+			<generator class="foreign">
+				<param name="property">student</param>  <!-- 生成主键参考外键属性 -->
+			</generator>
+		</id>
+		<!-- 一对一双向主键关联 -->
+		<property name="num"/>
+		<one-to-one name="student" constrained="true"></one-to-one>
+    </class>
+	
+</hibernate-mapping>
+
+<!--理解；<many-to-one name="student" column="studentId" unique="true"></many-to-one>  学生卡StuIdCard指向学生student(更名studentId)，并且每张学生卡是唯一的，即一对一外向关联 -->
