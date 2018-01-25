@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.by.hibernate.Student" table="t_student">
+		<id name="id">
+			<generator class="native"></generator>
+		</id>
+		<property name="name"></property>
+		<set name="teachers" table="t_s"><!-- 中间表名称 -->
+			<key column="student_id"></key>
+			<many-to-many class="com.by.hibernate.Teacher" column="teacher_id"></many-to-many>
+		</set>
+    </class>
+</hibernate-mapping>
