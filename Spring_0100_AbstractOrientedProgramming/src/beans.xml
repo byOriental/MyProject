@@ -1,0 +1,7 @@
+<beans>
+	<bean id="u" class="com.by.dao.impl.UserDAOImpl" />
+	<bean id="userService" class="com.by.service.UserService" > <!-- 注入 -->
+		<property name="userDAO" bean="u"/><!-- 将UserDAOImpl注入到userDAO，相当于通过子类初始化接口 -->
+	</bean>
+	<!-- 一个类的属性userDAO，可以在配置文件中直接指定好,当获取类UserService时，属性userDAO已经注入进来了 -->
+</beans>
