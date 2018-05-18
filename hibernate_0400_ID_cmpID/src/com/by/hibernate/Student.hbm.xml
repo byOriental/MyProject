@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+ 
+<hibernate-mapping package="com.by.hibernate">
+	<class name="Student" table="student"> 
+		<composite-id name="pk" class="com.by.hibernate.StudentPK">
+			<key-property name="id"></key-property>
+			<key-property name="name"></key-property>
+		</composite-id>
+		<property name="age"/>
+	</class>
+</hibernate-mapping>

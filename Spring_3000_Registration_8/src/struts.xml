@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+    "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<!-- <constant name="struts.devMode" value="true"></constant> -->
+	<package name="registration"  namespace="/" extends="struts-default">
+		<action name="consumer" class="com.by.regisration.action.ConsumerAction">
+			<result name="success">/registerSuccess.jsp</result>
+			<result name="fail">/registerFail.jsp</result>
+		</action>
+	</package>
+</struts>

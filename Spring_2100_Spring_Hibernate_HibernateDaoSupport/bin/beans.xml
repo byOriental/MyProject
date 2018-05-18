@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-2.5.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+           http://www.springframework.org/schema/tx 
+           http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+	<context:annotation-config />
+	<context:component-scan base-package="com.by" />
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<value>classpath:jdbc.properties</value>
+		</property>
+	</bean>
+
+	<bean id="dataSource" destroy-method="close"
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName"
+			value="${jdbc.driverClassName}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+<!-- org.springframework.orm.hibernate4.LocalSessionFactoryBean 正确配法-->
+<!-- org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean 错误配法-->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" /><!--dataSource注入给 sessionFactory -->
+		<!-- <property name="annotatedClasses"> -->
+		<property name="packagesToScan">
+			<list>
+				<value>com.by.model</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQL5Dialect
+				</prop>
+				<prop key="hibernate.show_sql">true</prop>
+			</props>
+		</property>
+	</bean>
+<!-- 这是一个切面类aop -->
+	<bean id="txManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" /><!--sessionFactory注入给 txManager -->
+	</bean>
+	<!-- xml配置 -->
+	<aop:config>
+		<!-- 定义在service包和所有子包里的任意类的任意方法的执行 -->
+		<aop:pointcut expression="execution(public * com.by.service..*.*(..))" id="bussinessService"/>
+		<aop:advisor advice-ref="txAdvicer" pointcut-ref="bussinessService"/>
+	</aop:config>
+	<tx:advice id="txAdvicer" transaction-manager="txManager">
+		<tx:attributes>
+			<tx:method name="get*" read-only="true"/><!-- get方法为只读 -->
+			<tx:method name="add*" propagation="REQUIRED"/>
+		</tx:attributes>
+	</tx:advice>
+	<!-- http://blog.sina.com.cn/s/blog_9312148d0101opip.html   hibernate4.0之后不能使用hibernateTemplate了 -->
+		<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+</beans>

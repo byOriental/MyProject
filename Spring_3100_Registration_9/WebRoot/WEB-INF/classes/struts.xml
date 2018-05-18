@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+    "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<!-- <constant name="struts.devMode" value="true"></constant> -->
+	<!-- 
+	动态方法调用：http://localhost:8080/Spring_3100_Registration_9/consumer!list
+	条件：struts2必须配置DynamicMethodInvocation常量
+	参考：struts2_1100
+	 -->
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	<package name="registration"  namespace="/" extends="struts-default">
+		<action name="consumer" class="com.by.regisration.action.ConsumerAction">
+			<result name="success">/registerSuccess.jsp</result>
+			<result name="fail">/registerFail.jsp</result>
+			<result name="list">/consumerlist.jsp</result>
+		</action>
+	</package>
+</struts>
