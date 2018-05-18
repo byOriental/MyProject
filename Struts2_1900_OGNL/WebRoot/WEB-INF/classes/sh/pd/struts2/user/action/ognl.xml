@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+
+    <package name="ognl" extends="struts-default">
+
+        <action name="ognl" class="sh.pd.struts2.user.action.OgnlAction">
+            <result>/ognl.jsp</result>
+        </action>
+        <action name="test" class="sh.pd.struts2.user.action.TestAction">
+            <result type="chain">ognl</result>
+        </action>
+
+    </package>
+</struts>

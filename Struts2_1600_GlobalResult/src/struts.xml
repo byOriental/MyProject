@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+    <constant name="struts.devMode" value="true" />
+    <package name="user" namespace="/user" extends="struts-default">
+    	
+    	
+    	<global-results><!-- 接收所有返回值为 "mainpage"的请求-->
+    		<result name="mainpage">/main.jsp</result>
+    	</global-results>
+    	
+    	<action name="index">
+    		<result>/index.jsp</result>
+    	</action>
+    	
+	    <action name="user" class="sh.pd.struts2.user.action.UserAction">
+	    	<result>/user_success.jsp</result><!-- 默认返回值；success -->
+	    	<result name="error">/user_error.jsp</result>
+	    </action>	    
+    </package>
+    
+    <package name="admin" namespace="/admin" extends="user">
+    <!--包user下的配置对下对这儿来说是其作用的 /不用指定返回值"mainpage"所在action -->
+    	<action name="admin" class="sh.pd.struts2.user.action.AdminAction">
+    		<result>/admin.jsp</result><!-- 返回“mainPage”，继承user包，使用<global-results>标签 -->
+    	</action>
+    </package>
+</struts>  

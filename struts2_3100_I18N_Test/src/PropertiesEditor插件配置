@@ -1,0 +1,5 @@
+为实现国际化做准备(ascii),所有语言可以使用编码UTF-8来表示，一般使用工具PropertiesEditor
+1、下载PropertiesEditor插件 http://download.csdn.net/detail/qq_31151929/9487482
+2、解压出features、plugins文件
+3、在MyEclipse的安装目录（..\MyEclipse10.6\MyEclipse 10\dropins）下的dropins 下新建一个文件夹，最好见名知意，将那两个文件之间放在这个文件夹下面，重启MyEclipse10。
+4、打开*.properties文件得open with–>PropertiesEditor打开才行。为了一劳永逸，配置一下*.properties的默认打开方式就行了。

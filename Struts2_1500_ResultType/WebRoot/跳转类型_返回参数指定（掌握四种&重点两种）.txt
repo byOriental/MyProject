@@ -1,0 +1,5 @@
+不同返回值参数类型，跳转方式不一样；
+1、dispatcher 服务器端跳转      默认     重点掌握
+2、redirect  客户端跳转     重点掌握
+3、chain  服务器端跳转
+4、redirectAction  客户端跳转

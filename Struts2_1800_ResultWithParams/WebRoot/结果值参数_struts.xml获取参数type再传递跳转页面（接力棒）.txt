@@ -1,0 +1,1 @@
+传递进去的type(经过action),struts.xml对其进行获取，在跳转页面进行传输

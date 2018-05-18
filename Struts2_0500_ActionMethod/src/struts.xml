@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<!-- struts2框架版本高，导致出现异常：There is no Action mapped for namespace / and action name...故添加DynamicMethodInvocation动态方法绑定声明 -->
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+    <constant name="struts.devMode" value="true" />
+    <package name="user" extends="struts-default" namespace="/user">
+        <action name="userAdd" class="sh.pd.struts2.actionMethod.UserAction" method="add">
+            <result>/user_add_success.jsp</result>
+        </action>
+        
+        <action name="user" class="sh.pd.struts2.actionMethod.UserAction">
+            <result>/user_add_success.jsp</result>
+        </action>
+    </package>
+</struts>    

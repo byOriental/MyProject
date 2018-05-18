@@ -1,0 +1,15 @@
+运行机制：
+1、客户端用户发送请求到服务器端，服务器端web.xml文件对请求进行过滤处理（通过ActionContextLoader调用），并将其转交给Struts2框架配置文件struts2.xml,过滤配置文件为；
+  <filter>
+    <filter-name>struts2</filter-name>
+    <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>struts2</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+2、Strut2框架通过ActionMapper找到对应的aciton(进入到ActionContext).
+3、在ActionContext里面,调用具体某个action是由ActionMapper把用户的request转交给ActionProxy。
+4、ActionProxy再通过ActionMapper和ConfigurationManager找到需要的Action类。
+5、ActionProxy创建一个ActionInvocation实例，最终由ActionInvocation进行调用真正的Action类。
+

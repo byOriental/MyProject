@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+
+    <!--<constant name="struts.enable.DynamicMethodInvocation" value="false" />-->
+    <constant name="struts.devMode" value="true" />
+    <!--<constant name="struts.ognl.allowStaticMethodAccess" value="true"></constant>-->
+    <constant name="struts.ui.theme" value="mytheme" /><!-- 设置自己的主题 & 目录-->
+	<package name="theme" extends="struts-default">
+<!-- 覆盖源文件，则从根路径执行替换文件 -->
+        <action name="theme" class="sh.pd.struts2.user.theme.ThemeAction">
+            <result>/theme.jsp</result>
+        </action>
+	
+    </package>
+
+</struts>    

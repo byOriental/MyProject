@@ -1,0 +1,28 @@
+定义自己转换器，当对特殊格式的属性进行转换时，必须对这个属性所用到
+的转换器位置进行注册，固定格式为：
+全局：xwork-conversion.properties  (放在source根目录下)<推荐使用>
+	p（属性名）=conversion
+局部：xxxAction-conversion.properties  (放在对应action目录下)
+	com.xx.xx(类名)=conversion
+注解：Annotation ……
+
+注：属性值所属特征要写完整路径名,例如坐标点p,属于java的java.awt.Point类，应该这样来注册;
+java.awt.Point=com.bjsxt.converter.MyPointConverter
+---------------------------------------------------------------------------
+	public Object convertFromString(Map context, String[] values, Class toClass) {
+		// values为前台传过来的参数，toClass为转换的目标参数
+		Point p = new Point();
+		String[] strs = (String[]) values;
+		String[] xy = strs[0].split(",");
+		p.x = Integer.parseInt(xy[0]);
+		p.y = Integer.parseInt(xy[1]);
+		return p;
+
+	}
+
+	@Override
+	public String convertToString(Map context, Object o) {
+		// TODO Auto-generated method stub
+		return o.toString();
+	}
+	------------------------------------------------------------------

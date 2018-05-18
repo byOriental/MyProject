@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+    <constant name="struts.devMode" value="true" />
+    
+    <package name="default" namespace="/" extends="struts-default">
+    	<default-action-ref name="index"></default-action-ref><!-- 默认action,不论如何访问都跳到default.jsp -->
+    	<action name="index">
+    		<result>/default.jsp</result>
+    	</action>
+    </package>
+</struts>

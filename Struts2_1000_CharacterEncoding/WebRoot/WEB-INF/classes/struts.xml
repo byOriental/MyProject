@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="GBK" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+    <constant name="struts.devMode" value="true" />
+    <constant name="struts.i18n.encoding" value="GBK" /><!--  internationalization -->
+    <package name="user" extends="struts-default" namespace="/user">
+        <action name="userAdd" class="sh.pd.struts2.user.action.UserAction" method="add">
+            <result>/user_add_success.jsp</result>
+        </action>
+        
+        <action name="user" class="sh.pd.struts2.user.action.UserAction">
+            <result>/user_add_success.jsp</result>
+        </action>
+    </package>
+</struts>   

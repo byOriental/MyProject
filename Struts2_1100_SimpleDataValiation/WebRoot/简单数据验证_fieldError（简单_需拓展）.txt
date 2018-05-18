@@ -1,0 +1,1 @@
+Action通过标签addFieldError(集合对象)对验证结果值进行KEY-VALUE存储，再在jsp页面对其进行输出。
