@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+           <!-- bean的名称可以取值name||id -->
+  <bean name="u" class="com.by.dao.impl.UserDAOImpl">
+  	<!-- 初始化属性 -->
+  	<property name="daoId" value="8"></property>
+  	<property name="daoStatus" value="good"></property>
+  </bean>
+  <!-- prototype.原型 。prototype所声明的为不可复制的。默认为可以复制的-->
+  <bean id="userService" class="com.by.service.UserService" scope="prototype">
+  	<!-- <property name="userDAO" ref="u" /> set方法注入 -->
+  	<constructor-arg>
+  		<ref bean="u"/><!-- 构造方法注入&有一个参数 -->
+  	</constructor-arg>
+  </bean>
+</beans>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd"
+          >
+
+  <bean name="userDAO" class="com.by.dao.impl.UserDAOImpl">
+  	<property name="daoId" value="1"></property>
+  </bean>
+  
+  <bean name="userDAO2" class="com.by.dao.impl.UserDAOImpl">
+  	<property name="daoId" value="2"></property>
+  </bean>
+	<!-- 自动注入，autowire="byName"按名字自动注入 -->
+  <bean id="userService" class="com.by.service.UserService" scope="prototype" autowire="byName">
+  	<!-- 手动注入 <property name="userDAO" ref="userDAO2"></property>-->
+  </bean>
+  
+
+</beans>

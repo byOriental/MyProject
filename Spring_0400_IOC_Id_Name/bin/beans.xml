@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+           <!-- bean的名称可以取值name||id -->
+  <bean name="u" class="com.by.dao.impl.UserDAOImpl"></bean>
+  <!-- set注入——u对象注入进去 -->
+  <bean id="userService" class="com.by.service.UserService">
+  	<!-- <property name="userDAO" ref="u" /> set方法注入 -->
+  	<constructor-arg>
+  		<ref bean="u"/><!-- 构造方法注入&有一个参数 -->
+  	</constructor-arg>
+  </bean>
+</beans>

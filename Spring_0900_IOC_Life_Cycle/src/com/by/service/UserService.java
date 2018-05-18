@@ -1,0 +1,28 @@
+package com.by.service;
+
+import com.by.dao.UserDAO;
+import com.by.model.User;
+
+public class UserService {
+	private UserDAO userDAO;
+
+	public void init() {
+		System.out.println("init");
+	}
+
+	public UserDAO getUserDAO() {
+		return userDAO;
+	}
+
+	public void setUserDAO(UserDAO userDAO) {
+		this.userDAO = userDAO;
+	}
+
+	public void add(User user) {
+		this.userDAO.save(user);
+	}
+
+	public void destroy() {
+		System.out.println("destroy");
+	}
+}

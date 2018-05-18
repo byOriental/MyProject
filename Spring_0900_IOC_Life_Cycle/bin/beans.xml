@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd"
+          >
+
+  <bean name="userDAO" class="com.by.dao.impl.UserDAOImpl">
+  	<property name="daoId" value="1"></property>
+  </bean>
+	<!-- 自动注入 -->
+  <bean id="userService" class="com.by.service.UserService" init-method="init" destroy-method="destroy">
+  </bean>
+
+</beans>
