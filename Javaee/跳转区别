@@ -1,0 +1,6 @@
+html页面设置跳转、<jsp:forward>跳转、response.sendredirect跳转
+html页面设置跳转    和   response.sendredirect跳转 属于客户端跳转，跳转之后地址栏发生改变，而且在跳转之前整个页面
+剩余代码必须执行完毕才能够跳转。
+<jsp:forward>跳转   属于服务器跳转，跳转后地址栏没有发生改变，当在使用request域时只有服务器跳转属性值才能保存到跳转页面。
+同时，<jsp:forward>跳转可以方便使用<jsp:param>进行参数设置，而response.sendredirect只能通过地址栏重写进行参数设置
+但是，当在sql操作使用<jsp:forward>跳转时，必须在其之前进行数据库关闭，否则会出现数据库异常，因为跳转以后剩余代码没有执行。

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>Javaee</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <servlet>
+  	<servlet-name>hl</servlet-name>
+  	<jsp-file>/WEB-INF/hello.jsp</jsp-file><!-- 真实地址 -->
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>hl</servlet-name><!-- 内部定义关键字连接 -->
+  	<url-pattern>/hello.world</url-pattern><!-- 虚拟地址 -->
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>init</servlet-name>
+  	<jsp-file>/WEB-INF/init.jsp</jsp-file>
+  	<init-param>
+  		<param-name>driver</param-name>
+  		<param-value>com.mysql.jdbc.Driver</param-value>
+  	</init-param>
+  	<init-param><!-- 每一个值单独设置 -->
+  		<param-name>url</param-name>
+  		<param-value>jdbc:mysql://localhost:3306/baiyang</param-value>
+  	</init-param>
+  </servlet>	
+  <servlet-mapping>
+  	<servlet-name>init</servlet-name>
+  	<url-pattern>/config.init</url-pattern>
+  </servlet-mapping>
+</web-app>

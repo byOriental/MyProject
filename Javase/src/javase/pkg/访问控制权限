@@ -1,0 +1,7 @@
+范围：
+i.同一类、ii.同一包中的类、iii.不同包中的子类、iiii.不同包
+
+private;i
+default;i、ii
+private;i、ii、iii
+public;i、ii、iii、iiii

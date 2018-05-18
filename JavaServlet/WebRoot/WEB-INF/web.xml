@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>JavaServlet</display-name>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>InputServlet</servlet-name>
+    <servlet-class>pd.by.servletBasic.InputServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>ServletTest</servlet-name>
+    <servlet-class>pd.by.servletBasic.ServletTest</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>initParamServlet</servlet-name>
+    <servlet-class>pd.by.servletBasic.InitParamServlet</servlet-class>
+    
+    <init-param>
+    	<param-name>ref</param-name>
+    	<param-value>www.google.com</param-value>
+    </init-param>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>sessionServlet</servlet-name>
+    <servlet-class>pd.by.servletBasic.SessionServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>servletContextServlet</servlet-name>
+    <servlet-class>pd.by.servletBasic.ServletContextServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>RedirectServlet</servlet-name>
+    <servlet-class>pd.by.servletBasic.RedirectServlet</servlet-class>
+    
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>ServletReidrectServlet</servlet-name>
+    <servlet-class>pd.by.servletBasic.ServletReidrectServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>SimpleFilter</servlet-name>
+    <servlet-class>pd.by.servletFilter.SimpleFilter</servlet-class>
+  </servlet>
+
+
+
+
+
+
+
+
+  <servlet-mapping>
+    <servlet-name>InputServlet</servlet-name>
+    <url-pattern>/servlet/InputServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ServletTest</servlet-name>
+    <url-pattern>/servlet/ServletTest</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>initParamServlet</servlet-name>
+    <url-pattern>/servlet/InitParamServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>sessionServlet</servlet-name>
+    <url-pattern>/servlet/SessionServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>servletContextServlet</servlet-name>
+    <url-pattern>/servlet/ServletContextServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RedirectServlet</servlet-name>
+    <url-pattern>/servlet/RedirectServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ServletReidrectServlet</servlet-name>
+    <!-- 必须修改为“/ServletReidrectServlet”才能正常访问到get_info.jsp -->
+    <url-pattern>/ServletReidrectServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SimpleFilter</servlet-name>
+    <url-pattern>/servlet/SimpleFilter</url-pattern>
+  </servlet-mapping>
+  
+<!-- FilterDemo -->
+<filter>
+	<filter-name>simple</filter-name>
+	<filter-class>pd.by.servletFilter.SimpleFilter</filter-class>
+	<init-param>
+		<param-name>ref</param-name>
+		<param-value>hellworldbeijing!!!</param-value>
+	</init-param>
+</filter>
+<filter-mapping>
+	<filter-name>simple</filter-name>
+	<url-pattern>/*</url-pattern>
+</filter-mapping>
+
+<!-- EndondingFilter -->
+<filter>
+	<filter-name>encodingfilter</filter-name>
+	<filter-class>pd.by.servletFilter.EncodingFilter</filter-class>
+	<init-param>
+		<param-name>charset</param-name>
+		<param-value>utf-8</param-value>
+	</init-param>
+</filter>
+<filter-mapping>
+	<filter-name>encodingfilter</filter-name>
+	<url-pattern>/*</url-pattern>
+</filter-mapping>
+
+<listener>
+	<listener-class>
+		pd.by.servletListener.ServletRequestEventDemo
+	</listener-class>
+</listener>
+
+<listener>
+	<listener-class>
+		pd.by.servletListener.ServletRequestAttributeListenerDemo
+	</listener-class>
+</listener>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>
